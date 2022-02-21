@@ -25,7 +25,24 @@ a {
 
 .flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   min-height: 60px;
+}
+
+header {
+  background-color: var(--primary);
+  height: 62px;
+  color: var(--terciary);
+}
+
+.logo {
+  padding: 5px 0;
+  color: var(--terciary);
+}
+
+.my-link {
+  padding: 20px;
+  color: var(--terciary);
+  font-size: 1.5rem;
 }
