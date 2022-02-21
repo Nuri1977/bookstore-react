@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookItem from './BookItem';
@@ -17,7 +16,7 @@ function BooksList({ books }) {
 }
 
 BooksList.propTypes = {
-  books: PropTypes.array.isRequired,
+  books: PropTypes.arrayOf(BookItem.propTypes.book).isRequired,
 };
 
 export default BooksList;
