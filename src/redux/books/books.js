@@ -1,26 +1,7 @@
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 
-const initialState = [
-  {
-    id: 1,
-    category: 'Action',
-    title: 'The hunger games',
-    author: 'Suzane Collins',
-  },
-  {
-    id: 2,
-    category: 'Science Fiction',
-    title: 'Dune',
-    author: 'Frank Herbert',
-  },
-  {
-    id: 3,
-    category: 'Economy',
-    title: 'Capital in the Twenty-First Century',
-    author: 'Suzzane Collins',
-  },
-];
+const initialState = [];
 
 export const addBook = (payload) => ({
   type: ADD_BOOK,

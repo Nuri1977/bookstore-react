@@ -15,6 +15,7 @@ function FormAddBook() {
       id: nanoid(),
       title: titleInputRef.current.value,
       author: authorInputRef.current.value,
+      category: categoryInputRef.current.value,
     };
     dispatch(addBook(newBook));
     titleInputRef.current.value = '';
