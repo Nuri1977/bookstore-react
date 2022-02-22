@@ -2,6 +2,7 @@
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 const GET_BOOKS = 'bookStore/books/GET_BOOKS';
+const CLEAR_BOOKS = 'bookStore/books/CLEAR_BOOKS';
 
 const initialState = [];
 
@@ -49,16 +50,30 @@ export const addBookApi = (payload) => async (dispatch) => (
     })
 );
 
+export const deleteBook = (id) => async (dispatch) => (
+  fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/43a4DCrG45arGZobDEJN/books/${id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.text())
+    .then(dispatch({ type: REMOVE_BOOK, id }))
+);
+
+export const clearBooks = () => ({
+  type: CLEAR_BOOKS,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOKS:
       return state.concat(action.payload);
+    case CLEAR_BOOKS:
+      return [];
     case ADD_BOOK:
       return [...state, {
         ...action.payload,
       }];
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.id);
+      return state.filter((book) => book.item_id !== action.id);
     default:
       return state;
   }
