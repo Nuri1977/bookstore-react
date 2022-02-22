@@ -10,7 +10,6 @@ function BooksContainer() {
     dispatch(getBooks());
   }, []);
   const books = useSelector((state) => state.books);
-  if (books.length) console.log(books);
   return (
     <div className="container">
       <BooksList books={books} />

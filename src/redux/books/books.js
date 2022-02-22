@@ -5,19 +5,6 @@ const GET_BOOKS = 'bookStore/books/GET_BOOKS';
 
 const initialState = [];
 
-export const getBooks = () => async (dispatch) => (
-  fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/43a4DCrG45arGZobDEJN/books')
-    .then((response) => response.json())
-    .then((data) => {
-      const obj = Object.entries(data);
-      const books = obj.map(([item_id, value]) => {
-        const [book] = value;
-        return { ...book, item_id };
-      });
-      dispatch({ type: GET_BOOKS, books });
-    })
-);
-
 export const addBook = (payload) => ({
   type: ADD_BOOK,
   payload,
@@ -28,10 +15,44 @@ export const removeBook = (id) => ({
   id,
 });
 
+const setBooks = (payload) => ({
+  type: GET_BOOKS,
+  payload,
+});
+
+export const getBooks = () => async (dispatch) => (
+  fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/43a4DCrG45arGZobDEJN/books')
+    .then((response) => response.json())
+    .then((data) => {
+      const obj = Object.entries(data);
+      const books = obj.map(([item_id, value]) => {
+        const [book] = value;
+        return { ...book, item_id };
+      });
+      dispatch(setBooks(books));
+    })
+);
+
+export const addBookApi = (payload) => async (dispatch) => (
+  fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/43a4DCrG45arGZobDEJN/books', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-type': 'application/json; Charset=UTF-8',
+    },
+  })
+    .then((response) => response.ok)
+    .then((data) => {
+      if (data) {
+        dispatch(addBook(payload));
+      }
+    })
+);
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOKS:
-      return state.concat(action.books);
+      return state.concat(action.payload);
     case ADD_BOOK:
       return [...state, {
         ...action.payload,
