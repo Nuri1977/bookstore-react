@@ -46,3 +46,7 @@ header {
   color: var(--terciary);
   font-size: 1.5rem;
 }
+
+.justify-between {
+  justify-content: space-between;
+}
