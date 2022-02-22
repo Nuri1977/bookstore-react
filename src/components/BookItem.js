@@ -14,9 +14,8 @@ function BookItem({ book }) {
     <li>
       <h3>{book.category}</h3>
       <h2>{book.title}</h2>
-      <h5>{book.author}</h5>
       <div>
-        <button type="button" onClick={() => handleRemoveBook(book.id)}>Remove</button>
+        <button type="button" onClick={() => handleRemoveBook(book.item_id)}>Remove</button>
       </div>
     </li>
   );
@@ -24,9 +23,8 @@ function BookItem({ book }) {
 
 BookItem.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    item_id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
   }).isRequired,
 };
