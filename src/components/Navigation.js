@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Navigation() {
   return (
     <header>
-      <div className="container flex">
+      <div className="flex panel-bg-navigation">
         <h1>
           <Link to="/" className="logo">Bookstore CMS</Link>
         </h1>
