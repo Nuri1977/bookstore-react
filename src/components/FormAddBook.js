@@ -2,6 +2,7 @@ import { React, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addBookApi } from '../redux/books/books';
+import './FormAddBook.css';
 
 function FormAddBook() {
   const titleInputRef = useRef();
