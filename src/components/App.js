@@ -6,14 +6,15 @@ import Navigation from './Navigation';
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<BooksContainer />} />
-        <Route path="categories" element={<CategoriesContainer />} />
-      </Routes>
+    <div className="Bookstore-CMS">
+      <div className="panel-bg-container">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<BooksContainer />} />
+          <Route path="categories" element={<CategoriesContainer />} />
+        </Routes>
+      </div>
     </div>
-
   );
 }
 
